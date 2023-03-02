@@ -23,8 +23,21 @@ class ApplicationTests {
 	@Test
 	@DisplayName(" Longest Common Substring Test methods")
 	public void testLongestCommonSubstring() {
-		Assert.assertEquals(4, JunitFunctionDeclaration.longestCommonSubstr("ABCDGH", "ACDGHR"));
-		
+		Assert.assertEquals(4, JunitFunctionDeclaration.longestCommonSubstr("ABCDGH", "ACDGHR"));	
 	}
+	 @Test
+	 @DisplayName("IP Check Test Api Function")
+	public void ipCheckTest() {
+		boolean res=JunitFunctionDeclaration.checkIp("192.23.34.0");
+		Assert.assertTrue(res);
+		Assert.assertTrue("Valid Ip Address", res);
+	}
+	 
+	 @Test
+	 @DisplayName("Remove Duplicate Adjacent Character")
+	 public void removeDuplicateTest() {
+		 String msg=JunitFunctionDeclaration.removeDuplicate("Saifuddin");
+		 Assert.assertEquals("Saifuin", msg);
+	 }
 
 }

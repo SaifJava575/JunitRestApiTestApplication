@@ -1,5 +1,7 @@
 package com.junit.app.model;
 
+import java.util.Stack;
+
 public class JunitFunctionDeclaration {
 	
 	public static int add(int a, int b) {
@@ -19,4 +21,62 @@ public class JunitFunctionDeclaration {
 		}
 		return ans;
 	}
+	
+	public static boolean checkIp(String s) {
+		int count = 0;
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == '.')
+				count++;
+			else if (!Character.isDigit(s.charAt(i)))
+				return false;
+		}
+		if (count != 3)
+			return false;
+		String[] arr = s.split("\\.");
+		if (arr.length != 4)
+			return false;
+		for (String ele : arr) {
+			if (ele == null || ele.equals(""))
+				return false;
+			if (0 > Integer.valueOf(ele) || Integer.valueOf(ele) > 255)
+				return false;
+			if (ele.length() > 1 && ele.charAt(0) == '0')
+				return false;
+		}
+		return true;
+	}
+	
+	public static String removeDuplicate(String s) {
+		Stack<Character> st = new Stack<>();
+		boolean Duplicate = false;
+		for (int i = 0; i < s.length(); i++) {
+			char Ch = s.charAt(i);
+			if (st.size() == 0)
+				st.push(Ch);
+			else if (st.peek() == Ch) {
+				Duplicate = true;
+				continue;
+			} else {
+				if (Duplicate) {
+					st.pop();
+					Duplicate = false;
+				}
+				st.push(Ch);
+			}
+
+		}
+		if (Duplicate) {
+			st.pop();
+			Duplicate = false;
+		}
+		StringBuilder ans = new StringBuilder();
+		while (st.size() > 0)
+			ans = ans.append(st.pop());
+
+		if (ans.length() == s.length())
+			return ans.reverse().toString();
+
+		return (removeDuplicate(ans.reverse().toString()));
+	}
+	
 }
