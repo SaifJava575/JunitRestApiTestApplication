@@ -28,7 +28,7 @@ class ApplicationTests {
 	 @Test
 	 @DisplayName("IP Check Test Api Function")
 	public void ipCheckTest() {
-		boolean res=JunitFunctionDeclaration.checkIp("192.23.34.0");
+		boolean res=JunitFunctionDeclaration.checkIp("0.0.34.0");
 		Assert.assertTrue(res);
 		Assert.assertTrue("Valid Ip Address", res);
 	}
