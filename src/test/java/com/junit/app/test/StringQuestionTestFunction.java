@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.junit.app.model.JunitFunctionDeclaration;
 import com.junit.app.model.StringCodingQuestion;
 
-public class StirngQuestionTestFunction {
+public class StringQuestionTestFunction {
 
 	
 	@Test
@@ -41,5 +41,12 @@ public class StirngQuestionTestFunction {
 	 public void removeDuplicateTest() {
 		 String msg=JunitFunctionDeclaration.removeDuplicate("Saifuddin");
 		 Assert.assertEquals("Saifuin", msg);
+	 }
+	 
+	 @Test
+	 @DisplayName("Non repeating charater Junit Testing Methods")
+	 public void nonRepeatingChar() {
+		 String actualRes=StringCodingQuestion.nonRepeatingCharater("hellow");
+		 Assert.assertEquals("h", actualRes);
 	 }
 }
