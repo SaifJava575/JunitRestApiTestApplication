@@ -49,4 +49,18 @@ public class StringQuestionTestFunction {
 		 String actualRes=StringCodingQuestion.nonRepeatingCharater("hellow");
 		 Assert.assertEquals("h", actualRes);
 	 }
+	 
+	 @Test
+	 @DisplayName("Multiply Two String methods test")
+	 public void multiplyTest() {
+		 String res=StringCodingQuestion.multiplyTwoString("33", "10");
+		 Assert.assertEquals("330", res);
+	 }
+	 
+	 @Test
+	 @DisplayName("Implement Two String strstr function test")
+	 public void strstrTest() {
+		 int res=StringCodingQuestion.strstr("GeeksForGeeks", "For");
+		 Assert.assertEquals(5, res);
+	 }
 }
