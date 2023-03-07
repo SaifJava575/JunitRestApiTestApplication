@@ -70,4 +70,11 @@ public class StringQuestionTestFunction {
 		 int res=StringCodingQuestion.fact(4);
 		 Assert.assertEquals(24, res);
 	 }
+	 
+	 @Test
+	 @DisplayName(" Convrert Roman to Integer number Testing methods ")
+	 public void romanToInteger() {
+		 int res=StringCodingQuestion.romanToDecimal("CDLIX");
+		 Assert.assertEquals(459, res);
+	 }
 }
