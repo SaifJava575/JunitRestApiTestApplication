@@ -67,4 +67,12 @@ public class StringCodingQuestion {
 		}
 		return -1;
 	}
+	
+	//T(C)=O(n)   and S(C)=O(n)
+	   public static int fact(int n) {
+		   if(n==0|| n==1)
+			   return 1;
+		   else 
+			   return n*fact(n-1);
+	   }
 }

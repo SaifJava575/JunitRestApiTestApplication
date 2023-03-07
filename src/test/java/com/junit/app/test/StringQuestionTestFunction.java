@@ -63,4 +63,11 @@ public class StringQuestionTestFunction {
 		 int res=StringCodingQuestion.strstr("GeeksForGeeks", "For");
 		 Assert.assertEquals(5, res);
 	 }
+	 
+	 @Test
+	 @DisplayName("Test the Factorial number test")
+	 public void factorialTest() {
+		 int res=StringCodingQuestion.fact(4);
+		 Assert.assertEquals(24, res);
+	 }
 }
