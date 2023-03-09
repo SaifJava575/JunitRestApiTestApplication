@@ -77,4 +77,20 @@ public class StringQuestionTestFunction {
 		 int res=StringCodingQuestion.romanToDecimal("CDLIX");
 		 Assert.assertEquals(459, res);
 	 }
+	 
+	 @Test
+	 @DisplayName("Check the valid Substring length function test")
+	 public void validSubstring() {
+		 int res=StringCodingQuestion.findMaxLen("()(())");
+		 Assert.assertEquals(6, res);
+	 }
+	 
+	 @Test
+	 @DisplayName("Iso morphic String function Test")
+	 public void isomorphicString() {
+		 boolean actualResult=StringCodingQuestion.areIsomorphic("aab", "xxy");
+		 Assert.assertTrue(actualResult);
+		 Assert.assertTrue("Two String are isomorphic", actualResult);
+	 }
+	 
 }
