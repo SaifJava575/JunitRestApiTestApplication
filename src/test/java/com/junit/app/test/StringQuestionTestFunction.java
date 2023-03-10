@@ -93,4 +93,18 @@ public class StringQuestionTestFunction {
 		 Assert.assertTrue("Two String are isomorphic", actualResult);
 	 }
 	 
+	 @Test
+	 @DisplayName("Remove Duplicate Character Function Test..........")
+	 public void removeDuplicateCharacterTest() {
+		 String actualRes=StringCodingQuestion.removeDuplicate("saifuddin");
+		 Assert.assertEquals("saifudn",actualRes);
+	 }
+	 
+	 @Test
+	 @DisplayName("Longest SubString Distinct Character Function Unit Testing")
+	 public void longestDistinctSubString() {
+		 int actualRes=StringCodingQuestion.longestSubstrDistinctChars("geeksforgeeks");
+		 Assert.assertEquals(7, actualRes);
+	 }
+	 
 }

@@ -2,6 +2,7 @@ package com.junit.app.model;
 
 import java.math.BigInteger;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Stack;
 
@@ -113,40 +114,77 @@ public class StringCodingQuestion {
 		}
 		return sum;
 	}
-	
-	//T(c)=O(N)   and S(C)=O(n)
-		public static int findMaxLen(String S) {
-	        Stack<Integer> st = new Stack<>();
-	        st.push(-1);
-	        int res=0;
-	        for(int i=0;i<S.length();i++){
-	            if(S.charAt(i)=='('){
-	                st.push(i);
-	            }else{
-	                st.pop();
-	                if(st.empty())
-	                    st.push(i);
-	                else
-	                    res = Math.max(res, i-st.peek());
-	            }
-	        }
-	        return res;
-	    }
-		
-		//T(c)=O(|str1|+|str2|)  and S(c)= O(Number of different characters).
-		public static boolean areIsomorphic(String str1, String str2) {
-			if (str1.length() != str2.length())
+
+	// T(c)=O(N) and S(C)=O(n)
+	public static int findMaxLen(String S) {
+		Stack<Integer> st = new Stack<>();
+		st.push(-1);
+		int res = 0;
+		for (int i = 0; i < S.length(); i++) {
+			if (S.charAt(i) == '(') {
+				st.push(i);
+			} else {
+				st.pop();
+				if (st.empty())
+					st.push(i);
+				else
+					res = Math.max(res, i - st.peek());
+			}
+		}
+		return res;
+	}
+
+	// T(c)=O(|str1|+|str2|) and S(c)= O(Number of different characters).
+	public static boolean areIsomorphic(String str1, String str2) {
+		if (str1.length() != str2.length())
+			return false;
+		Map<Character, Integer> m1 = new HashMap<>();
+		Map<Character, Integer> m2 = new HashMap<>();
+
+		for (Integer i = 0; i < str1.length(); i++) {
+
+			if (m1.put(str1.charAt(i), i) != m2.put(str2.charAt(i), i)) {
 				return false;
-			Map<Character, Integer> m1 = new HashMap<>();
-			Map<Character, Integer> m2 = new HashMap<>();
+			}
+		}
+		return true;
+	}
 
-			for (Integer i = 0; i < str1.length(); i++) {
-
-				if (m1.put(str1.charAt(i), i) != m2.put(str2.charAt(i), i)) {
-					return false;
+	// T(C)=O(|s|) and S(C)=O(constant)
+	public static String removeDuplicate(String str) {
+		Map<Character, Integer> map = new LinkedHashMap<Character, Integer>();
+		String res = "";
+		for (int i = 0; i < str.length(); i++) {
+			if (map.containsKey(str.charAt(i))) {
+				// map.put(str.charAt(i), map.get(str.charAt(i)) + 1);
+				continue;
+			} else {
+				map.put(str.charAt(i), 1);
+				res += str.charAt(i);
+			}
+		}
+		/*
+		 * for (Character set : map.keySet()) { res += set; }
+		 */
+		return res;
+	}
+	
+	// T(C)=O(|S|) and S(C)= O(K), where K is Constant.
+		public static int longestSubstrDistinctChars(String S) {
+			int l = 0, r = 0;
+			int maxlength = 0;
+			Map<Character, Integer> map = new HashMap<>();
+			while (r < S.length()) {
+				if (map.containsKey(S.charAt(r))) {
+					map.remove(S.charAt(l));
+					l++;
+				} else {
+					map.put(S.charAt(r), 1);
+					r++;
+					maxlength = Math.max(maxlength, (r - l));
 				}
 			}
-			return true;
 
+			return maxlength;
 		}
 }
