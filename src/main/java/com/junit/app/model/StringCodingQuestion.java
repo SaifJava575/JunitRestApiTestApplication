@@ -187,4 +187,33 @@ public class StringCodingQuestion {
 
 			return maxlength;
 		}
+		
+		public static int lps(String s) {
+			int n = s.length();
+			if (n < 2)
+				return 0;
+			int i = 0;
+			int j = 1;
+			while (j < n) {
+				if (s.charAt(i) == s.charAt(j)) {
+					i++;
+					j++;
+				} else {
+					j = j - i + 1;
+					i = 0;
+				}
+			}
+			return i;
+		}
+		
+		//T(c)=O(N)   and S(C)=O(N)
+		public static boolean areRotations(String s1, String s2) {
+			if (s1.length() != s2.length())
+				return false;
+			s1 = s1 + s1;
+			int x = s1.indexOf(s2);
+			if (x == -1)
+				return false;
+			return true;
+		}
 }

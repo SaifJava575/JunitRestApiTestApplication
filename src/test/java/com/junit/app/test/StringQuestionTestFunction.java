@@ -107,4 +107,18 @@ public class StringQuestionTestFunction {
 		 Assert.assertEquals(7, actualRes);
 	 }
 	 
+	 @Test
+	 @DisplayName("Longest Prefix and Suffix length test")
+	 public void lspTest() {
+		 int actualRes=StringCodingQuestion.lps("saifudsai");
+		 Assert.assertEquals(3, actualRes);
+	 }
+	 
+	 @Test
+	 @DisplayName("Two String check rotation Test")
+	 public void rotationTest() {
+		 boolean actualResult=StringCodingQuestion.areRotations("geeksforgeeks", "geeksforgeeks");
+		 Assert.assertTrue(actualResult);
+	 }
+	 
 }
