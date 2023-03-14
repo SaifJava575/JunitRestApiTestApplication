@@ -121,4 +121,11 @@ public class StringQuestionTestFunction {
 		 Assert.assertTrue(actualResult);
 	 }
 	 
+	 @Test
+	 @DisplayName("Test the Longest Repeating Sub String ")
+	 public void test_LongestRepeatingharacter() {
+		 int length=StringCodingQuestion.LongestRepeatingSubsequence("axxxy");
+		 Assert.assertEquals(2, length);
+	 }
+	 
 }
