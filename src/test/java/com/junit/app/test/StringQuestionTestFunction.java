@@ -128,4 +128,11 @@ public class StringQuestionTestFunction {
 		 Assert.assertEquals(2, length);
 	 }
 	 
+	 @Test
+	 @DisplayName("Test the longest Valid Parenthesis ")
+	 public void maxlength() {
+		 int actualRes=StringCodingQuestion.maxLength("(()()(");
+		 Assert.assertEquals(4, actualRes);
+	 }
+	 
 }
