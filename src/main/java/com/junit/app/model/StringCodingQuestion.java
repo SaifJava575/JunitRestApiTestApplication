@@ -1,6 +1,7 @@
 package com.junit.app.model;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -256,5 +257,19 @@ public class StringCodingQuestion {
 				return 0;
 			return ans;
 		}
+		
+		public static String largestNumber(String str) {
+			char[] ch = str.toCharArray();
+			Arrays.sort(ch);
+			String s = String.valueOf(ch);
+			String s1 = "";
+			for (int i = s.length() - 1; i >= 0; i--) {
+				s1 += s.charAt(i);
+			}
+			return s1;
+		}
+
+		static String max;
+
 
 }

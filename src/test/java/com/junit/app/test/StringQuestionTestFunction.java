@@ -135,4 +135,11 @@ public class StringQuestionTestFunction {
 		 Assert.assertEquals(4, actualRes);
 	 }
 	 
+	 @Test
+	 @DisplayName("Test the largest Number Function")
+	 public void test_largestNumber() {
+		 String actualResult=StringCodingQuestion.largestNumber("1234567");
+		 Assert.assertEquals("7654321", actualResult);
+	 }
+	 
 }
