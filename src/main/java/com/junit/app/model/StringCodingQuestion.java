@@ -296,6 +296,26 @@ public class StringCodingQuestion {
 			}
 			return ans;
 		}
+  
+		public static String firstRepChar(String S) {
+			HashMap<Character, Integer> map = new LinkedHashMap<>();
+			String response = "";
 
+			for (int i = 0; i < S.length(); i++) {
+				if (map.containsKey(S.charAt(i))) {
+					map.put(S.charAt(i), map.get(S.charAt(i)) + 1);
+					if (map.get(S.charAt(i)) > 1) {
+						response = response + S.charAt(i);
+						return response;
+					}
+				}
+
+				else {
+					map.put(S.charAt(i), 1);
+				}
+			}
+
+			return "-1";
+		}
 
 }

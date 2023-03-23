@@ -148,5 +148,12 @@ public class StringQuestionTestFunction {
 		int actualResult = StringCodingQuestion.longestkSubstr("aabacbebebe", 3);
 		Assert.assertEquals(7, actualResult);
 	}
+	
+	@Test
+	@DisplayName("First Repeat Character test Function")
+	public void test_ReeatChar() {
+		String str=StringCodingQuestion.firstRepChar("geeksforgeeks");
+		Assert.assertEquals("e", str);
+	}
 
 }
