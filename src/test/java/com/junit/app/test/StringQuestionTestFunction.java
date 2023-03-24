@@ -148,12 +148,21 @@ public class StringQuestionTestFunction {
 		int actualResult = StringCodingQuestion.longestkSubstr("aabacbebebe", 3);
 		Assert.assertEquals(7, actualResult);
 	}
-	
+
 	@Test
 	@DisplayName("First Repeat Character test Function")
 	public void test_ReeatChar() {
-		String str=StringCodingQuestion.firstRepChar("geeksforgeeks");
+		String str = StringCodingQuestion.firstRepChar("geeksforgeeks");
 		Assert.assertEquals("e", str);
+	}
+
+	@Test
+	@DisplayName("Second Repeat Character Test Function")
+	public void second_repeat_String_Test() {
+		String arr[] = { "geek", "for", "geek", "for", "geek", "aaa" };
+		int n = arr.length;
+		String actualRes = StringCodingQuestion.secFrequent(arr, n);
+		Assert.assertEquals("for", actualRes);
 	}
 
 }
