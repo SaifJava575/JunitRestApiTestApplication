@@ -165,4 +165,18 @@ public class StringQuestionTestFunction {
 		Assert.assertEquals("for", actualRes);
 	}
 
+	@Test
+	@DisplayName("Test The binary SubString Function")
+	public void test_binary_SubString() {
+		int actualRes = StringCodingQuestion.binarySubstring(5, "01101");
+		Assert.assertEquals(3, actualRes);
+	}
+
+	@Test
+	@DisplayName("Test the Remove Consective Character Function")
+	public void test_remove_character() {
+		String actualRes = StringCodingQuestion.removeConsecutiveCharacter("aaabbbaaaaaaaaac");
+		Assert.assertEquals("abac", actualRes);
+	}
+
 }

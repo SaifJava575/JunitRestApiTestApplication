@@ -169,175 +169,196 @@ public class StringCodingQuestion {
 		 */
 		return res;
 	}
-	
+
 	// T(C)=O(|S|) and S(C)= O(K), where K is Constant.
-		public static int longestSubstrDistinctChars(String S) {
-			int l = 0, r = 0;
-			int maxlength = 0;
-			Map<Character, Integer> map = new HashMap<>();
-			while (r < S.length()) {
-				if (map.containsKey(S.charAt(r))) {
-					map.remove(S.charAt(l));
-					l++;
-				} else {
-					map.put(S.charAt(r), 1);
-					r++;
-					maxlength = Math.max(maxlength, (r - l));
-				}
+	public static int longestSubstrDistinctChars(String S) {
+		int l = 0, r = 0;
+		int maxlength = 0;
+		Map<Character, Integer> map = new HashMap<>();
+		while (r < S.length()) {
+			if (map.containsKey(S.charAt(r))) {
+				map.remove(S.charAt(l));
+				l++;
+			} else {
+				map.put(S.charAt(r), 1);
+				r++;
+				maxlength = Math.max(maxlength, (r - l));
 			}
-
-			return maxlength;
-		}
-		
-		public static int lps(String s) {
-			int n = s.length();
-			if (n < 2)
-				return 0;
-			int i = 0;
-			int j = 1;
-			while (j < n) {
-				if (s.charAt(i) == s.charAt(j)) {
-					i++;
-					j++;
-				} else {
-					j = j - i + 1;
-					i = 0;
-				}
-			}
-			return i;
-		}
-		
-		//T(c)=O(N)   and S(C)=O(N)
-		public static boolean areRotations(String s1, String s2) {
-			if (s1.length() != s2.length())
-				return false;
-			s1 = s1 + s1;
-			int x = s1.indexOf(s2);
-			if (x == -1)
-				return false;
-			return true;
-		}
-		
-		//T(C)=O(n2)  and S(C)=O(n2)
-		public static int LongestRepeatingSubsequence(String str) {
-			int n = str.length();
-			int[][] dp = new int[n + 1][n + 1];
-			for (int i = n - 1; i >= 0; i--) {
-				for (int j = n - 1; j >= 0; j--) {
-					if (i != j && str.charAt(i) == str.charAt(j)) {
-						dp[i][j] = dp[i + 1][j + 1] + 1;
-					} else {
-			 	dp[i][j] = Math.max(dp[i + 1][j], dp[i][j + 1]);
-					}
-				}
-			}
-			return dp[0][0];
-		}
-		
-		//T(C)=O(|S|)  and S(C)=O(|S|)
-		public static int maxLength(String S) {
-			int n = S.length();
-			if (n == 1)
-				return 0;
-			int ans = Integer.MIN_VALUE;
-			Stack<Integer> st = new Stack<>();
-			st.push(-1);
-			for (int i = 0; i < n; i++) {
-				if (S.charAt(i) == '(') {
-					st.push(i);
-				} else {
-					st.pop();
-					if (st.isEmpty()) {
-						st.push(i);
-					} else
-						ans = Math.max(ans, i - st.peek());
-				}
-			}
-			if (ans == Integer.MIN_VALUE)
-				return 0;
-			return ans;
-		}
-		
-		public static String largestNumber(String str) {
-			char[] ch = str.toCharArray();
-			Arrays.sort(ch);
-			String s = String.valueOf(ch);
-			String s1 = "";
-			for (int i = s.length() - 1; i >= 0; i--) {
-				s1 += s.charAt(i);
-			}
-			return s1;
 		}
 
-		static String max;
-		
-		public static int longestkSubstr(String s, int k) {
-			HashMap<Character, Integer> map = new HashMap<>();
-			int i = 0;
-			int j = 0;
-			int ans = -1;
-			while (i < s.length()) {
-				char c = s.charAt(i);
-				map.put(c, map.getOrDefault(c, 0) + 1);
-				if (map.size() == k) {
-					ans = Math.max(ans, (i - j + 1));
-				} else {
-					while (map.size() > k) {
-						char ch = s.charAt(j);
-						int count = map.get(ch);
-						if (count == 1)
-							map.remove(ch);
-						else
-							map.put(ch, count - 1);
-						j++;
-					}
-				}
+		return maxlength;
+	}
+
+	public static int lps(String s) {
+		int n = s.length();
+		if (n < 2)
+			return 0;
+		int i = 0;
+		int j = 1;
+		while (j < n) {
+			if (s.charAt(i) == s.charAt(j)) {
 				i++;
+				j++;
+			} else {
+				j = j - i + 1;
+				i = 0;
 			}
-			return ans;
 		}
-  
-		public static String firstRepChar(String S) {
-			HashMap<Character, Integer> map = new LinkedHashMap<>();
-			String response = "";
+		return i;
+	}
 
-			for (int i = 0; i < S.length(); i++) {
-				if (map.containsKey(S.charAt(i))) {
-					map.put(S.charAt(i), map.get(S.charAt(i)) + 1);
-					if (map.get(S.charAt(i)) > 1) {
-						response = response + S.charAt(i);
-						return response;
-					}
-				}
+	// T(c)=O(N) and S(C)=O(N)
+	public static boolean areRotations(String s1, String s2) {
+		if (s1.length() != s2.length())
+			return false;
+		s1 = s1 + s1;
+		int x = s1.indexOf(s2);
+		if (x == -1)
+			return false;
+		return true;
+	}
 
-				else {
-					map.put(S.charAt(i), 1);
-				}
-			}
-
-			return "-1";
-		}
-		
-		public static String secFrequent(String arr[], int N) {
-			HashMap<String, Integer> h = new HashMap<String, Integer>();
-			for (int i = 0; i < N; i++) {
-				h.put(arr[i], h.getOrDefault(arr[i], 0) + 1);
-			}
-			int max = 0;
-			String str = "";
-			int secmax = 0;
-			for (Map.Entry<String, Integer> e : h.entrySet()) {
-				if (e.getValue() > max)
-					max = e.getValue();
-			}
-			for (Map.Entry<String, Integer> e : h.entrySet()) {
-				if (e.getValue() > secmax && e.getValue() != max) {
-					secmax = e.getValue();
-					str = e.getKey();
+	// T(C)=O(n2) and S(C)=O(n2)
+	public static int LongestRepeatingSubsequence(String str) {
+		int n = str.length();
+		int[][] dp = new int[n + 1][n + 1];
+		for (int i = n - 1; i >= 0; i--) {
+			for (int j = n - 1; j >= 0; j--) {
+				if (i != j && str.charAt(i) == str.charAt(j)) {
+					dp[i][j] = dp[i + 1][j + 1] + 1;
+				} else {
+					dp[i][j] = Math.max(dp[i + 1][j], dp[i][j + 1]);
 				}
 			}
-			return str;
+		}
+		return dp[0][0];
+	}
+
+	// T(C)=O(|S|) and S(C)=O(|S|)
+	public static int maxLength(String S) {
+		int n = S.length();
+		if (n == 1)
+			return 0;
+		int ans = Integer.MIN_VALUE;
+		Stack<Integer> st = new Stack<>();
+		st.push(-1);
+		for (int i = 0; i < n; i++) {
+			if (S.charAt(i) == '(') {
+				st.push(i);
+			} else {
+				st.pop();
+				if (st.isEmpty()) {
+					st.push(i);
+				} else
+					ans = Math.max(ans, i - st.peek());
+			}
+		}
+		if (ans == Integer.MIN_VALUE)
+			return 0;
+		return ans;
+	}
+
+	public static String largestNumber(String str) {
+		char[] ch = str.toCharArray();
+		Arrays.sort(ch);
+		String s = String.valueOf(ch);
+		String s1 = "";
+		for (int i = s.length() - 1; i >= 0; i--) {
+			s1 += s.charAt(i);
+		}
+		return s1;
+	}
+
+	static String max;
+
+	public static int longestkSubstr(String s, int k) {
+		HashMap<Character, Integer> map = new HashMap<>();
+		int i = 0;
+		int j = 0;
+		int ans = -1;
+		while (i < s.length()) {
+			char c = s.charAt(i);
+			map.put(c, map.getOrDefault(c, 0) + 1);
+			if (map.size() == k) {
+				ans = Math.max(ans, (i - j + 1));
+			} else {
+				while (map.size() > k) {
+					char ch = s.charAt(j);
+					int count = map.get(ch);
+					if (count == 1)
+						map.remove(ch);
+					else
+						map.put(ch, count - 1);
+					j++;
+				}
+			}
+			i++;
+		}
+		return ans;
+	}
+
+	public static String firstRepChar(String S) {
+		HashMap<Character, Integer> map = new LinkedHashMap<>();
+		String response = "";
+
+		for (int i = 0; i < S.length(); i++) {
+			if (map.containsKey(S.charAt(i))) {
+				map.put(S.charAt(i), map.get(S.charAt(i)) + 1);
+				if (map.get(S.charAt(i)) > 1) {
+					response = response + S.charAt(i);
+					return response;
+				}
+			}
+
+			else {
+				map.put(S.charAt(i), 1);
+			}
 		}
 
+		return "-1";
+	}
+
+	public static String secFrequent(String arr[], int N) {
+		HashMap<String, Integer> h = new HashMap<String, Integer>();
+		for (int i = 0; i < N; i++) {
+			h.put(arr[i], h.getOrDefault(arr[i], 0) + 1);
+		}
+		int max = 0;
+		String str = "";
+		int secmax = 0;
+		for (Map.Entry<String, Integer> e : h.entrySet()) {
+			if (e.getValue() > max)
+				max = e.getValue();
+		}
+		for (Map.Entry<String, Integer> e : h.entrySet()) {
+			if (e.getValue() > secmax && e.getValue() != max) {
+				secmax = e.getValue();
+				str = e.getKey();
+			}
+		}
+		return str;
+	}
+
+	// T(C)=O(N) and S(C)=O(1)
+	public static int binarySubstring(int a, String str) {
+		int count = 0;
+		int res = 0;
+		for (int i = 0; i < a; i++) {
+			if (str.charAt(i) == '1')
+				count++;
+		}
+		res = count * (count - 1) / 2;
+		return res;
+	}
+
+	public static String removeConsecutiveCharacter(String S) {
+		int n = S.length();
+		String ans = "" + S.charAt(0);
+		for (int i = 1; i < n; i++) {
+			if (S.charAt(i) != S.charAt(i - 1))
+				ans += S.charAt(i);
+		}
+		return ans;
+	}
 
 }
