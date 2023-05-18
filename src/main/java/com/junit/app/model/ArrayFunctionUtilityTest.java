@@ -30,5 +30,20 @@ public class ArrayFunctionUtilityTest {
 		}
 		return ans;
 	}
+	
+	public static int maxProduct(int[] arr, int n) {
+		int maxLeft = 1, maxRight = 1;
+		int max = Integer.MIN_VALUE;
+		for (int i = 0; i < n; i++) {
+			if (maxLeft == 0)
+				maxLeft = 1;
+			if (maxRight == 0)
+				maxRight = 1;
+			maxLeft *= arr[i];
+			maxRight *= arr[n - 1 - i];
+			max = Math.max(max, Math.max(maxLeft, maxRight));
+		}
+		return max;
+	}
 
 }
